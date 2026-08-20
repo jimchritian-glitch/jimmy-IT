@@ -3,521 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jimmy-IT Konstanz | IT-Beratung & Support</title>
+    <title>Jimmy IT Konstanz | PC-Hilfe, Windows & Office Support</title>
     <style>
         :root {
             --primary: #0056b3;
-            --primary-dark: #003875;
-            --secondary: #00a8ff;
-            --light-bg: #f0f4f9;
-            --card-bg: #ffffff;
-            --text-color: #1e293b;
-            --text-muted: #64748b;
+            --secondary: #00a8cc;
+            --dark: #212529;
+            --light: #f8f9fa;
             --white: #ffffff;
-            --shadow: 0 10px 25px -5px rgba(0, 86, 179, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 20px 30px -10px rgba(0, 86, 179, 0.22);
+            --gray: #6c757d;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            scroll-behavior: smooth;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
         body {
-            background-color: var(--light-bg);
-            color: var(--text-color);
+            background-color: var(--light);
+            color: var(--dark);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* Animated Header */
         header {
-            background: linear-gradient(135deg, #002b5b 0%, #0056b3 50%, #0088ff 100%);
-            background-size: 200% 200%;
-            animation: gradientShift 8s ease infinite;
-            color: var(--white);
-            padding: 3.5rem 1.2rem 2.5rem;
-            text-align: center;
-            position: relative;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        header h1 {
-            font-size: clamp(2rem, 6vw, 3.2rem);
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.6rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        header p {
-            font-size: clamp(1rem, 3.5vw, 1.25rem);
-            opacity: 0.95;
-            max-width: 650px;
-            margin: 0 auto;
-            font-weight: 300;
-        }
-
-        /* Mobile Sticky Nav */
-        nav {
-            background: rgba(0, 43, 91, 0.92);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 0.8rem;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
         }
 
-        nav a {
-            color: var(--white);
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--primary);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            padding: 6px 12px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-
-        nav a:hover, nav a:active {
-            background: rgba(255, 255, 255, 0.2);
-            color: var(--secondary);
-        }
-
-        /* Hero / About Section */
-        .hero {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: var(--white);
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            border-left: 6px solid var(--primary);
-            transform: translateY(20px);
-            opacity: 0;
-            animation: fadeInUp 0.8s forwards 0.2s;
-        }
-
-        .hero h2 {
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-            font-size: 1.8rem;
-        }
-
-        .hero p {
-            font-size: 1.05rem;
-            color: #334155;
-        }
-
-        .badge {
-            display: inline-block;
-            background: #e0f2fe;
-            color: #0369a1;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            margin-bottom: 0.8rem;
-        }
-
-        /* Services Section mit 3 Container & Fotos */
-        .services-container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            padding: 0 1rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(0, 86, 179, 0.08);
-            opacity: 0;
-            transform: translateY(30px);
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--secondary);
-        }
-
-        /* Bild-Wrapper mit Zoom-Effekt */
-        .card-img-wrapper {
-            position: relative;
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .card-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .card:hover .card-img-wrapper img {
-            transform: scale(1.1);
-        }
-
-        .card-body {
-            padding: 1.8rem 1.5rem;
+        .nav-links {
             display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .card h3 {
-            color: var(--primary);
-            font-size: 1.4rem;
-            margin-bottom: 0.6rem;
-        }
-
-        .card-intro {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .card ul {
             list-style: none;
-            margin-top: auto;
-        }
-
-        .card ul li {
-            position: relative;
-            padding-left: 24px;
-            margin-bottom: 0.7rem;
-            font-size: 0.95rem;
-            color: #334155;
-        }
-
-        .card ul li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--secondary);
-            font-weight: 800;
-        }
-
-        /* Kontakt & Google Maps Section */
-        .contact-section {
-            max-width: 1100px;
-            margin: 3rem auto;
-            background: var(--white);
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
             gap: 2rem;
         }
 
-        @media (max-width: 768px) {
-            .contact-section {
-                grid-template-columns: 1fr;
-                padding: 1.5rem;
-            }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
         }
 
-        .contact-info h2 {
+        .nav-links a:hover {
             color: var(--primary);
-            margin-bottom: 1.2rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(0,86,179,0.95), rgba(0,168,204,0.9)), url('https://unsplash.com') no-repeat center center/cover;
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 0.8rem 2.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            background-color: var(--dark);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary);
+            margin: 10px auto 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .about-box {
+            background-color: var(--white);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
         }
 
         .info-item {
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        .info-item .icon {
-            font-size: 1.3rem;
-        }
-
-        .info-item strong {
-            color: var(--primary-dark);
-            display: block;
-        }
-
-        .info-item a {
+        .info-item h4 {
             color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* Formular Styling */
-        .quick-form {
-            margin-top: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .quick-form input, .quick-form textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        .quick-form input:focus, .quick-form textarea:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.15);
-        }
-
-        .quick-form button {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3);
-        }
-
-        .quick-form button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(0, 86, 179, 0.4);
-        }
-
-        .map-container {
-            width: 100%;
-            height: 100%;
-            min-height: 320px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
         }
 
         footer {
-            background: var(--primary-dark);
+            background-color: var(--dark);
             color: var(--white);
             text-align: center;
-            padding: 1.8rem;
-            margin-top: 3rem;
+            padding: 2rem;
+            margin-top: 5rem;
             font-size: 0.9rem;
-            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Jimmy-IT Konstanz</h1>
-        <p>IT-Beratung, Support & Reparatur für Privatkunden & kleine Unternehmen</p>
+        <nav class="nav-container">
+            <a href="#" class="logo">💻 Jimmy IT Konstanz</a>
+            <ul class="nav-links">
+                <li><a href="#home">Start</a></li>
+                <li><a href="#services">Leistungen</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <a href="#ueber-mich">Über mich</a>
-        <a href="#leistungen">Leistungen</a>
-        <a href="#kontakt">Kontakt & Anfahrt</a>
-    </nav>
-
-    <!-- Über mich Section -->
-    <section id="ueber-mich" class="hero">
-        <span class="badge">MCSE Zertifiziert</span>
-        <h2>Über mich & Expertise</h2>
-        <p>
-            Willkommen bei <strong>Jimmy-IT Konstanz</strong>! Als <strong>Microsoft Certified Systems Engineer (MCSE)</strong> 
-            mit über <strong>15 Jahren Praxiserfahrung</strong> in Server- und Clientinfrastrukturen sowie in der IT-Projektplanung biete ich Ihnen schnellen, unkomplizierten und verlässlichen IT-Service in Konstanz und Umgebung.
-        </p>
+    <section id="home" class="hero">
+        <h1>Ihr zuverlässiger IT-Partner in Konstanz</h1>
+        <p>Schnelle Hilfe bei PC-Problemen, Windows-Störungen, Microsoft Office Einrichtung und Datenrettung. Für Privatkunden und Kleingewerbe.</p>
+        <a href="#kontakt" class="btn">Jetzt Hilfe anfordern</a>
     </section>
 
-    <!-- 3 Container mit Fotos & Bewegung -->
-    <section id="leistungen" class="services-container">
-        
-        <!-- Container 1: IT Support -->
-        <div class="card">
-            <div class="card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=800&q=80" alt="IT Support & Hilfe" loading="lazy">
+    <section id="services" class="section">
+        <h2 class="section-title">Unsere Leistungen</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">🛠️</div>
+                <h3>PC & Laptop Reparatur</h3>
+                <p>Fehlersuche, Hardware-Austausch (z. B. SSD-Aufrüstung), Reinigung von Lüftern und Behebung von Startproblemen.</p>
             </div>
-            <div class="card-body">
-                <h3>IT Support</h3>
-                <p class="card-intro">Schnelle und verlässliche Hilfe bei allen technischen Problemen im Alltag.</p>
-                <ul>
-                    <li>Schnelle Fehlerdiagnose & Problembehebung</li>
-                    <li>Windows & Mac OS Einrichtung / Wartung</li>
-                    <li>Einrichtung von Druckern, Peripherie & PC</li>
-                    <li>Fernwartung & Vor-Ort-Service in Konstanz</li>
-                    <li>Virenentfernung & Systembeschleunigung</li>
-                </ul>
+            <div class="card">
+                <div class="card-icon">🪟</div>
+                <h3>Windows Support</h3>
+                <p>Installation, Updates, Behebung von Bluescreens, Virenentfernung und System-Optimierung für schnelleres Arbeiten.</p>
             </div>
-        </div>
-
-        <!-- Container 2: Beratung & Reparatur -->
-        <div class="card">
-            <div class="card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=800&q=80" alt="Hardware Reparatur & Beratung" loading="lazy">
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>MS Office & Software</h3>
+                <p>Einrichtung von Outlook, Word, Excel, Lizenzaktivierung, E-Mail-Konfiguration und Behebung von Softwarekonflikten.</p>
             </div>
-            <div class="card-body">
-                <h3>Beratung & Reparatur</h3>
-                <p class="card-intro">Herstellerunabhängige Kaufberatung und Reparaturen aller Art.</p>
-                <ul>
-                    <li>Hardware-Diagnose & Komponenten-Tausch</li>
-                    <li>Reparatur von PCs, Laptops & Hardware aller Art</li>
-                    <li>Systemaufrüstung (SSD-Speicher, RAM-Erweiterung)</li>
-                    <li>Ehrliche Kaufberatung für Neuanschaffungen</li>
-                    <li>Professionelle Datenrettung & Backup-Konzepte</li>
-                </ul>
+            <div class="card">
+                <div class="card-icon">🛡️</div>
+                <h3>Backup & Sicherheit</h3>
+                <p>Einrichtung automatischer Datensicherungen, Installation von Antivirensoftware und Beratung zum Schutz Ihrer Daten.</p>
+            </div>
+            <!-- Hier beginnen die neuen Container -->
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <h3>Netzwerke für kleine Firmen</h3>
+                <p>Planung, Einrichtung und Absicherung von Firmennetzwerken, schnellem WLAN, Routern und sicheren VPN-Zugängen für das Homeoffice.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">☁️</div>
+                <h3>Microsoft 365 & Cloud</h3>
+                <p>Einrichtung von Online-Servern, Cloud-Speicher (OneDrive/SharePoint), Exchange-E-Mail-Konten und reibungslose Migration Ihrer Firmendaten.</p>
             </div>
         </div>
-
-        <!-- Container 3: Netzwerke & Office 365 -->
-        <div class="card">
-            <div class="card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80" alt="Netzwerke & Cloud Office 365" loading="lazy">
-            </div>
-            <div class="card-body">
-                <h3>Netzwerke & Office 365</h3>
-                <p class="card-intro">Netzwerklösungen & moderne Online-Workspaces für kleine Firmen & Heimnetze.</p>
-                <ul>
-                    <li>Einrichtung kleiner Heim- & Firmennetzwerke</li>
-                    <li>WLAN-Optimierung & Router (Fritz!Box etc.)</li>
-                    <li>Online Office 365 / Microsoft 365 Einrichtung</li>
-                    <li>E-Mail-Einrichtung & Cloud-Synchronisation</li>
-                    <li>Netzwerksicherheit & Firewall-Einstellungen</li>
-                </ul>
-            </div>
-        </div>
-
     </section>
 
-    <!-- Kontakt & Google Maps Section -->
-    <section id="kontakt" class="contact-section">
-        
+    <section id="about" class="section" style="background-color: #f1f3f5;">
+        <h2 class="section-title">Über Jimmy IT</h2>
+        <div class="about-box">
+            <p style="font-size: 1.1rem; text-align: center; color: var(--gray);">
+                Als inhabergeführter IT-Dienstleister in Konstanz stehe ich für unkomplizierte, schnelle und transparente Hilfe bei allen Computer-Problemen. Egal, ob der Rechner streikt, Windows nicht mehr hochfährt oder Outlook keine Mails mehr sendet – ich finde die Lösung. Ehrlich, fair und direkt bei Ihnen vor Ort oder per Fernwartung.
+            </p>
+        </div>
+    </section>
+
+    <section id="kontakt" class="section">
+        <h2 class="section-title">Kontakt</h2>
         <div class="contact-info">
-            <h2>Kontakt</h2>
             <div class="info-item">
-                <span class="icon">📍</span>
-                <div>
-                    <strong>Adresse:</strong>
-                    <span>Konstanz Paradies, Deutschland</span>
-                </div>
+                <h4>📞 Telefon</h4>
+                <p>+49 1522 5463546</p>
             </div>
             <div class="info-item">
-                <span class="icon">📞</span>
-                <div>
-                    <strong>Telefon:</strong>
-                    <a href="tel:015225463546">01522 5463546</a>
-                </div>
+                <h4>✉️ E-Mail</h4>
+                <p>zoghaibjim@gmail.com</p>
             </div>
             <div class="info-item">
-                <span class="icon">✉️</span>
-                <div>
-                    <strong>E-Mail:</strong>
-                    <a href="mailto:zoghaibjim@gmail.com">zoghaibjim@gmail.com</a>
-                </div>
+                <h4>📍 Einsatzort</h4>
+                <p>Konstanz & Umgebung<br>Vor Ort & Fernwartung</p>
             </div>
-
-            <!-- Interaktives Kontaktformular -->
-            <form class="quick-form" id="contactForm" onsubmit="handleFormSubmit(event)">
-                <input type="text" id="name" placeholder="Ihr Name" required>
-                <input type="email" id="email" placeholder="Ihre E-Mail-Adresse" required>
-                <textarea id="message" rows="3" placeholder="Wie kann ich Ihnen helfen?" required></textarea>
-                <button type="submit">Jetzt Nachricht senden 🚀</button>
-            </form>
-            <div id="formFeedback" style="margin-top:10px; color: var(--primary); font-weight:bold;"></div>
         </div>
 
-        <div>
-            <h2>Standort (Konstanz Paradies)</h2>
-            <div class="map-container">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2688.354890251147!2d9.162000000000001!3d47.662000000000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479af72583e7a09d%3A0x5017c76b0a2c0c0!2sParadies%2C%2078462%20Konstanz!5e0!3m2!1sde!2sde!4v1700000000000!5m2!1sde!2sde" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-        </div>
+  <!-- Google Maps Integration -->
+        <div style="max-width: 1100px; margin-top: 100px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <iframe 
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2687.195366494232!2d9.168684576794865!3d47.66120098420499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479af6e258ef4b0f%3A0x3829b0d224f81a53!2sLutherpl.%2C%2078462%20Konstanz-Altstadt!5e0!3m2!1sde!2sde!4v1786966098400!5m2!1sde!2sde" width="1100" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+
+	</div>
 
     </section>
 
     <footer>
-        <p>&copy; Jimmy-IT Konstanz – IT-Beratung & Support</p>
+        <p>&copy; 2026 Jimmy IT Konstanz. Alle Rechte vorbehalten.</p>
     </footer>
-
-    <!-- JavaScript Interaktivität & Bewegungseffekte -->
-    <script>
-        // Formular-Aktion
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            const mailtoLink = `mailto:zoghaibjim@gmail.com?subject=Anfrage von ${encodeURIComponent(name)}&body=${encodeURIComponent("Name: " + name + "\nE-Mail: " + email + "\n\nNachricht:\n" + message)}`;
-            
-            window.location.href = mailtoLink;
-
-            document.getElementById('formFeedback').innerText = "Vielen Dank! Ihr E-Mail-Programm wird geöffnet...";
-            document.getElementById('contactForm').reset();
-        }
-
-        // Scroll-Animation für die 3 Container (IntersectionObserver)
-        document.addEventListener("DOMContentLoaded", function() {
-            const cards = document.querySelectorAll('.card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.classList.add('visible');
-                        }, index * 150);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            cards.forEach(card => observer.observe(card));
-        });
-    </script>
 
 </body>
 </html>
