@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoghaib-IT.de | PC‑Hilfe, Windows & Office Support</title>
+
+    <style>
+        :root {
+            --primary: #0b5ed7;
+            --primary-dark: #073b8f;
+            --secondary: #e31b23;
+            --accent: #ff4d55;
+            --dark: #101827;
+            --text: #263449;
+            --muted: #64748b;
+            --light: #f5f8fc;
+            --white: #ffffff;
+            --border: #e3e9f2;
+            --shadow: 0 12px 35px rgba(15, 23, 42, 0.09);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a { color: inherit; }
+
+        /* TOP BANNER */
+        .top-banner {
+            background: linear-gradient(90deg, #063b8f, #0b5ed7 58%, #e31b23);
+            color: #fff;
+            padding: 0.65rem 1rem;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.92rem;
+        }
+
+        .top-banner span {
+            opacity: .92;
+            font-weight: 500;
+        }
+
+        /* HEADER */
+        header {
+            background: rgba(255,255,255,.98);
+            padding: 1rem 0;
+            box-shadow: 0 4px 18px rgba(15,23,42,.07);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: var(--dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+        }
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            box-shadow: 0 7px 18px rgba(0,86,179,.22);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.7rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 650;
+            transition: .25s ease;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        /* HERO */
+        .slider {
+            position: relative;
+            width: 100%;
+            min-height: 570px;
+            overflow: hidden;
+            color: #fff;
+            background: #071a3a;
+        }
+
+        .slides {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            width: 300%;
+            height: 100%;
+            animation: slideAnimation 18s infinite;
+        }
+
+        .slide {
+            width: 33.333%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: .72;
+        }
+
+        .slide::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(4,24,58,.88), rgba(11,94,215,.42), rgba(180,20,28,.30));
+        }
+
+        @keyframes slideAnimation {
+            0%, 30% { transform: translateX(0); }
+            36%, 63% { transform: translateX(-33.333%); }
+            69%, 96% { transform: translateX(-66.666%); }
+            100% { transform: translateX(0); }
+        }
+
+        .slider-text {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            min-height: 570px;
+            padding: 6rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: .4rem .8rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 999px;
+            background: rgba(255,255,255,.12);
+            backdrop-filter: blur(8px);
+            font-size: .9rem;
+            font-weight: 700;
+        }
+
+        .slider-text h1 {
+            font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+            font-weight: 800;
+            max-width: 800px;
+        }
+
+        .hero-brand {
+            display: block;
+            font-size: clamp(2.7rem, 5.5vw, 4.6rem);
+            line-height: 1.05;
+            letter-spacing: -.045em;
+        }
+
+        .hero-subtitle {
+            display: block;
+            margin-top: .45rem;
+            font-size: clamp(1.25rem, 2.5vw, 2rem);
+            line-height: 1.2;
+            font-weight: 500;
+            letter-spacing: -.015em;
+            opacity: .92;
+            font-size: clamp(2.4rem, 5vw, 4.5rem);
+            line-height: 1.08;
+            margin-bottom: 1.25rem;
+            letter-spacing: -.04em;
+        }
+
+        .slider-text p {
+            max-width: 720px;
+            font-size: 1.15rem;
+            opacity: .94;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: .8rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            color: var(--primary);
+            padding: .9rem 1.5rem;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 800;
+            transition: .25s ease;
+            box-shadow: 0 8px 22px rgba(0,0,0,.15);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0,0,0,.22);
+        }
+
+        .btn-outline {
+            background: rgba(255,255,255,.12);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,.45);
+            backdrop-filter: blur(8px);
+        }
+
+        /* TRUST STRIP */
+        .trust-strip {
+            max-width: 1100px;
+            margin: -45px auto 0;
+            position: relative;
+            z-index: 5;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .trust-item {
+            padding: 1.4rem 1rem;
+            text-align: center;
+            border-right: 1px solid var(--border);
+        }
+
+        .trust-item:last-child { border-right: 0; }
+        .trust-item strong { display: block; color: var(--dark); }
+        .trust-item span { color: var(--muted); font-size: .9rem; }
+
+        /* PHOTO STRIP */
+        .photo-strip {
+            max-width: 1100px;
+            margin: 3rem auto 0;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .photo-card {
+            min-height: 230px;
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            box-shadow: var(--shadow);
+        }
+
+        .photo-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 25%, rgba(4,24,58,.84));
+        }
+
+        .photo-card > div {
+            position: absolute;
+            left: 1.25rem;
+            right: 1rem;
+            bottom: 1.1rem;
+            color: #fff;
+            z-index: 2;
+        }
+
+        .photo-card strong {
+            display: block;
+            font-size: 1.15rem;
+        }
+
+        .photo-card span {
+            font-size: .9rem;
+            opacity: .9;
+        }
+
+        .photo-card-1 {
+            background-image: url("https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1000&q=85");
+        }
+
+        .photo-card-2 {
+            background-image: url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=85");
+        }
+
+        .photo-card-3 {
+            background-image: url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85");
+        }
+
+        /* SECTIONS */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5.5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.7rem);
+            margin-bottom: .7rem;
+            color: var(--dark);
+            letter-spacing: -.025em;
+        }
+
+        .section-subtitle {
+            max-width: 680px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            color: var(--muted);
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 64px;
+            height: 4px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 12px auto 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: left;
+            transition: .25s ease;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 40px rgba(15,23,42,.12);
+        }
+
+        .card-icon {
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            font-size: 1.7rem;
+            margin-bottom: 1.1rem;
+            border-radius: 15px;
+            background: #eef5ff;
+        }
+
+        .card h3 {
+            color: var(--dark);
+            margin-bottom: .55rem;
+            font-size: 1.2rem;
+        }
+
+        .card p { color: var(--muted); font-size: .96rem; }
+
+        /* ABOUT */
+        #about { background: linear-gradient(180deg, #eef4fa, #f8fafc); max-width: none; }
+        #about > * { max-width: 1200px; }
+
+        .about-box {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            max-width: 850px;
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .about-box p { color: var(--muted); font-size: 1.08rem; }
+
+        /* CONTACT */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .info-item {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .info-item h4 {
+            color: var(--primary);
+            margin-bottom: .5rem;
+            font-size: 1.15rem;
+        }
+
+        .info-item a {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .map-wrap {
+            max-width: 1100px;
+            margin: 3rem auto 0;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .map-wrap iframe {
+            display: block;
+            width: 100%;
+            height: 430px;
+            border: 0;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #101827; border-top: 4px solid var(--secondary);
+            color: #fff;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            font-size: .9rem;
+        }
+
+        footer .footer-brand {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: .35rem;
+        }
+
+        /* WHATSAPP */
+        .whatsapp {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 2000;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: #25D366;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,.22);
+            transition: .25s ease;
+        }
+
+        .whatsapp:hover {
+            transform: scale(1.08);
+        }
+
+        @media (max-width: 900px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-info { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .top-banner { font-size: .8rem; }
+            .nav-container { padding: 0 1rem; }
+            .nav-links { gap: .8rem; font-size: .88rem; }
+            .logo { font-size: 1.25rem; }
+            .logo-mark { width: 35px; height: 35px; }
+            .slider, .slider-text { min-height: 510px; }
+            .slider-text { padding: 4rem 1.25rem; }
+            .slider-text h1 { font-size: 2.55rem; }
+            .trust-strip {
+                margin: 0 1rem;
+                grid-template-columns: 1fr;
+            }
+            .trust-item {
+                border-right: 0;
+                border-bottom: 1px solid var(--border);
+            }
+            .trust-item:last-child { border-bottom: 0; }
+            .section { padding: 4rem 1.25rem; }
+        }
+
+        @media (max-width: 600px) {
+            .nav-container { flex-direction: column; gap: .8rem; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+            .grid { grid-template-columns: 1fr; }
+            .photo-strip { grid-template-columns: 1fr; }
+            .photo-card { min-height: 190px; }
+            .hero-buttons { width: 100%; }
+            .btn { width: 100%; }
+            .map-wrap iframe { height: 330px; }
+            .whatsapp { right: 16px; bottom: 16px; }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- TOP BANNER -->
+    <div class="top-banner">
+        💻 <span class="brand-domain">Zoghaib-IT.de</span>
+        <span>– IT-Hilfe in Konstanz & Umgebung · Vor Ort & Fernwartung</span>
+    </div>
+
+    <!-- HEADER -->    <header>
+        <nav class="nav-container">
+            <a href="https://www.zoghaib-it.de" class="logo"><span class="logo-mark">⌘</span> Zoghaib-IT</a>
+            <ul class="nav-links">
+                <li><a href="#home">Start</a></li>
+                <li><a href="#services">Leistungen</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SLIDER -->
+    <section id="home" class="slider">
+        <div class="slides">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1800&q=85');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1800&q=85');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=85');"></div>
+        </div>
+
+        <div class="slider-text">
+            <h1>Zoghaib-IT.de – Ihr IT‑Partner in Konstanz</h1>
+            <p>PC‑Hilfe, Windows‑Support, Office‑Einrichtung & Firmennetzwerke.</p>
+            <div class="hero-buttons"><a href="#kontakt" class="btn">Jetzt Hilfe anfordern</a><a href="tel:+4915225463546" class="btn btn-outline">📞 Direkt anrufen</a></div>
+        </div>
+    </section>
+
+    <div class="trust-strip" aria-label="Zoghaib-IT Vorteile">
+        <div class="trust-item"><strong>⚡ Schnelle Hilfe</strong><span>Praktische Lösungen ohne Umwege</span></div>
+        <div class="trust-item"><strong>🛡️ Zuverlässiger Service</strong><span>Transparent und verständlich</span></div>
+        <div class="trust-item"><strong>📍 Konstanz & Umgebung</strong><span>Vor Ort oder per Fernwartung</span></div>
+    </div>
+
+    <section class="photo-strip" aria-label="Zoghaib-IT Bilder">
+        <div class="photo-card photo-card-1">
+            <div><strong>PC & Laptop</strong><span>Reparatur & Optimierung</span></div>
+        </div>
+        <div class="photo-card photo-card-2">
+            <div><strong>Netzwerk & WLAN</strong><span>Einrichtung & Fehlerbehebung</span></div>
+        </div>
+        <div class="photo-card photo-card-3">
+            <div><strong>Microsoft 365</strong><span>Cloud & Office Support</span></div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+        <h2 class="section-title">Unsere Leistungen</h2>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">🛠️</div>
+                <h3>PC & Laptop Reparatur</h3>
+                <p>Fehlersuche, Hardware‑Austausch, SSD‑Upgrade, Lüfterreinigung und Startprobleme beheben.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🪟</div>
+                <h3>Windows Support</h3>
+                <p>Installation, Updates, Bluescreen‑Fix, Virenentfernung und System‑Optimierung.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>MS Office & Software</h3>
+                <p>Outlook, Word, Excel, Lizenzaktivierung, E‑Mail‑Konfiguration und Software‑Fehlerbehebung.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🛡️</div>
+                <h3>Backup & Sicherheit</h3>
+                <p>Automatische Backups, Antivirus‑Installation und Beratung zum Schutz Ihrer Daten.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <h3>Firmennetzwerke</h3>
+                <p>Planung, Einrichtung, WLAN‑Optimierung, Router‑Konfiguration und sichere VPN‑Zugänge.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">☁️</div>
+                <h3>Microsoft 365 & Cloud</h3>
+                <p>OneDrive, SharePoint, Exchange‑Konten und sichere Datenmigration.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+        <h2 class="section-title">Über Zoghaib-IT.de</h2>
+
+        <div class="about-box">
+            <p>
+                Als IT‑Dienstleister in Konstanz stehe ich für schnelle, transparente und zuverlässige Hilfe bei allen Computer‑ und Netzwerkproblemen – vor Ort oder per Fernwartung.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="kontakt" class="section">
+        <h2 class="section-title">Kontakt</h2>
+
+        <div class="contact-info">
+            <div class="info-item">
+                <h4>📞 Telefon</h4>
+                <p><a href="tel:+4915225463546" style="color:inherit;text-decoration:none;">+49 1522 5463546</a></p>
+            </div>
+
+            <div class="info-item">
+                <h4>✉️ E‑Mail</h4>
+                <p><a href="mailto:zoghaibjim@gmail.com" style="color:inherit;text-decoration:none;">zoghaibjim@gmail.com</a></p>
+            </div>
+
+            <div class="info-item">
+                <h4>📍 Einsatzort</h4>
+                <p>Konstanz & Umgebung<br>Vor Ort & Fernwartung</p>
+            </div>
+        </div>
+
+        <!-- MAP -->
+        <div class="map-wrap">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2687.195366494232!2d9.168684576794865!3d47.66120098420499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479af6e258ef4b0f%3A0x3829b0d224f81a53!2sLutherpl.%2C%2078462%20Konstanz-Altstadt!5e0!3m2!1sde!2sde!4v1786966098400!5m2!1sde!2sde"
+                width="1100" height="450" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <a class="whatsapp" href="https://wa.me/4915225463546" target="_blank" rel="noopener" aria-label="Zoghaib-IT über WhatsApp kontaktieren">◔</a>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-brand">Zoghaib-IT.de</div>
+        <p>Professionelle IT-Hilfe in Konstanz & Umgebung · Vor Ort & Fernwartung</p>
+        <p>&copy; 2026 Zoghaib-IT.de. Alle Rechte vorbehalten.</p>
+    </footer>
+
+</body>
+</html>
